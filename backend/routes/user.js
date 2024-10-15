@@ -96,7 +96,7 @@ router.post(
       );
       res.status(200).json({
         message: "User Successfully Logged In",
-        token,
+        token: `Bearer ${token}`,
       });
     }
   })
