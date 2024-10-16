@@ -7,11 +7,12 @@ const authMiddleware = (req, res, next) => {
     res.status(403).json({
       message: "Invalid token",
     });
+    return
   }
   const token = authHeader.split(" ")[1];
   try {
     const isValidToken = jwt.verify(token, JWT_SECRET);
-    console.log("Is valid Token", isValidToken);
+    // console.log("Is valid Token", isValidToken);
     req.userId = isValidToken.userId;
     next();
   } catch (e) {
